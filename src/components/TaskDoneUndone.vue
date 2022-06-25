@@ -1,9 +1,12 @@
 <template>
-  <input
-    type="checkbox"
-    :checked="task.status === '1'"
-    @click="doneUndoneTask(task.id)"
-  />
+  <div class="form-check">
+    <input
+      type="checkbox"
+      class="form-check-input p-2 shadow-sm cursor-pointer"
+      :checked="task.status === '1'"
+      @click="doneUndoneTask(task.id)"
+    />
+  </div>
 </template>
 
 <script>
@@ -31,3 +34,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.cursor-pointer {
+  cursor: pointer;
+}
+</style>

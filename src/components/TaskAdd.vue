@@ -1,7 +1,8 @@
 <template>
   <input
     type="text"
-    placeholder="Add task..."
+    class="form-control mb-3 shadow-sm"
+    placeholder="What needs to be done?"
     v-model="title"
     @keydown.enter="addTask"
     autofocus

@@ -1,9 +1,15 @@
 <template>
-  <div v-for="task in tasks" :key="task.id">
-    <TaskDoneUndone :task="task" @task-updated="getTasks" />
-    <span :class="task.status === '1' ? 'text-line-through' : ''">{{
-      task.title
-    }}</span>
+  <div
+    class="d-flex align-items-center justify-content-between gap-3 mb-2"
+    v-for="task in tasks"
+    :key="task.id"
+  >
+    <div class="d-flex align-items-center gap-1">
+      <TaskDoneUndone :task="task" @task-updated="getTasks" />
+      <span :class="task.status === '1' ? 'text-line-through' : ''">{{
+        task.title
+      }}</span>
+    </div>
     <TaskDelete :id="task.id" @task-deleted="getTasks" />
   </div>
 </template>

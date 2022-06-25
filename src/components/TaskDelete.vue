@@ -1,9 +1,6 @@
 <template>
-  <button
-    class="btn btn-sm btn-danger shadow-sm rounded-pill"
-    @click="deleteTask(id)"
-  >
-    X
+  <button class="btn border-0 p-0" @click="deleteTask(id)">
+    <i class="fas fa-times text-danger"></i>
   </button>
 </template>
 
