@@ -1,9 +1,13 @@
 <template>
-  <div v-for="task in tasks" :key="task.id">{{ task.title }}</div>
+  <div v-for="task in tasks" :key="task.id">
+    {{ task.title }}
+    <TaskDelete :id="task.id" @task-deleted="getTasks" />
+  </div>
 </template>
 
 <script>
-import ApiServices from "../services/ApiServices";
+import api from "../services/ApiService";
+import TaskDelete from "./TaskDelete.vue";
 
 export default {
   name: "TasksList",
@@ -14,7 +18,8 @@ export default {
   },
   methods: {
     getTasks() {
-      ApiServices.getTasks()
+      api
+        .getTasks()
         .then((response) => {
           this.tasks = response.data.data;
         })
@@ -24,5 +29,6 @@ export default {
   mounted() {
     this.getTasks();
   },
+  components: { TaskDelete },
 };
 </script>

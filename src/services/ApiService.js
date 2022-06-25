@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const APIClient = axios.create({
+const api = axios.create({
   baseURL: "https://tasks.jrwebdeveloper.com/api",
   withCredentials: false,
   headers: {
@@ -11,6 +11,9 @@ const APIClient = axios.create({
 
 export default {
   getTasks() {
-    return APIClient.get(`/tasks`);
+    return api.get(`/tasks`);
+  },
+  deleteTask(id) {
+    return api.delete(`/tasks/${id}`);
   },
 };
