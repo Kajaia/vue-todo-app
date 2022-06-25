@@ -33,6 +33,9 @@ export default {
   },
   mounted() {
     this.getTasks();
+    this.emitter.on("taskAdded", () => {
+      this.getTasks();
+    });
   },
 };
 </script>

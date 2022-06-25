@@ -13,6 +13,12 @@ export default {
   getTasks() {
     return api.get(`/tasks`);
   },
+  addTask(title) {
+    return api.post("/tasks", {
+      title: title,
+      status: 0,
+    });
+  },
   doneUndoneTask(id) {
     return api.put(`/tasks/${id}/done`);
   },
