@@ -25,4 +25,7 @@ export default {
   deleteTask(id) {
     return api.delete(`/tasks/${id}`);
   },
+  clearCompletedTasks() {
+    return api.post("/tasks/clear");
+  },
 };

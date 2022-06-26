@@ -11,8 +11,11 @@
               <TaskAdd />
               <TasksList />
             </div>
-            <div class="card-footer bg-white border-light">
+            <div
+              class="card-footer bg-white border-light d-flex align-items-center justify-content-between flex-wrap gap-2"
+            >
               <TasksFilter />
+              <TasksClear />
             </div>
           </div>
         </div>
@@ -25,8 +28,9 @@
 import TasksList from "../components/TasksList.vue";
 import TaskAdd from "../components/TaskAdd.vue";
 import TasksFilter from "../components/TasksFilter.vue";
+import TasksClear from "../components/TasksClear.vue";
 
 export default {
-  components: { TasksList, TaskAdd, TasksFilter },
+  components: { TasksList, TaskAdd, TasksFilter, TasksClear },
 };
 </script>

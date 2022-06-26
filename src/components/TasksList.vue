@@ -40,11 +40,16 @@ export default {
   },
   mounted() {
     this.getTasks();
+
+    // Listeners
     this.emitter.on("taskAdded", () => {
       this.getTasks();
     });
     this.emitter.on("filterUpdated", (str) => {
       this.status = str;
+      this.getTasks();
+    });
+    this.emitter.on("clearedCompletedTasks", () => {
       this.getTasks();
     });
   },
