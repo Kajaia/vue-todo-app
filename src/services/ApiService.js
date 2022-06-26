@@ -10,8 +10,8 @@ const api = axios.create({
 });
 
 export default {
-  getTasks() {
-    return api.get(`/tasks`);
+  getTasks(status) {
+    return api.get("/tasks", { params: { status: status } });
   },
   addTask(title) {
     return api.post("/tasks", {

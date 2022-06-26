@@ -11,6 +11,9 @@
               <TaskAdd />
               <TasksList />
             </div>
+            <div class="card-footer bg-white border-light">
+              <TasksFilter />
+            </div>
           </div>
         </div>
       </div>
@@ -21,8 +24,9 @@
 <script>
 import TasksList from "../components/TasksList.vue";
 import TaskAdd from "../components/TaskAdd.vue";
+import TasksFilter from "../components/TasksFilter.vue";
 
 export default {
-  components: { TasksList, TaskAdd },
+  components: { TasksList, TaskAdd, TasksFilter },
 };
 </script>

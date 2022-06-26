@@ -25,12 +25,13 @@ export default {
   data() {
     return {
       tasks: [],
+      status: null,
     };
   },
   methods: {
     getTasks() {
       api
-        .getTasks()
+        .getTasks(this.status)
         .then((response) => {
           this.tasks = response.data.data;
         })
@@ -40,6 +41,10 @@ export default {
   mounted() {
     this.getTasks();
     this.emitter.on("taskAdded", () => {
+      this.getTasks();
+    });
+    this.emitter.on("filterUpdated", (str) => {
+      this.status = str;
       this.getTasks();
     });
   },
