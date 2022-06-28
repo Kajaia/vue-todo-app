@@ -4,7 +4,7 @@
       type="checkbox"
       class="form-check-input p-2 shadow-sm cursor-pointer"
       :checked="task.status === '1'"
-      @click="doneUndoneTask(task.id)"
+      @change="doneUndoneTask(task.id)"
     />
   </div>
 </template>
@@ -26,7 +26,6 @@ export default {
               "success",
               res.data.status ? "Task finished" : "Task marked as unfinished"
             );
-            this.$emit("taskUpdated");
           }
         })
         .catch(console.error());

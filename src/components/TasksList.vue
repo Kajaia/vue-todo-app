@@ -41,15 +41,23 @@ export default {
   mounted() {
     this.getTasks();
 
-    // Listeners
-    this.emitter.on("taskAdded", () => {
+    // Echo listeners
+    window.Echo.channel("tasks").listen("TaskAdded", () => {
       this.getTasks();
     });
+    window.Echo.channel("tasks").listen("TaskDone", () => {
+      this.getTasks();
+    });
+    window.Echo.channel("tasks").listen("TaskDeleted", () => {
+      this.getTasks();
+    });
+    window.Echo.channel("tasks").listen("TasksCleared", () => {
+      this.getTasks();
+    });
+
+    // Emitt listeners
     this.emitter.on("filterUpdated", (str) => {
       this.status = str;
-      this.getTasks();
-    });
-    this.emitter.on("clearedCompletedTasks", () => {
       this.getTasks();
     });
   },

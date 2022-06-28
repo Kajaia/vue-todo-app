@@ -28,7 +28,6 @@ export default {
           if (res.status === 201) {
             this.title = "";
             toast("success", "Task added");
-            this.emitter.emit("taskAdded");
           }
         })
         .catch(console.error());

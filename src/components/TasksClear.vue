@@ -17,7 +17,6 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             toast("success", "Cleared completed tasks");
-            this.emitter.emit("clearedCompletedTasks");
           }
         })
         .catch(console.error());

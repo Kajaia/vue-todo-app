@@ -18,7 +18,6 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             toast("success", "Task deleted");
-            this.$emit("taskDeleted");
           }
         })
         .catch(console.error());

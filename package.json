@@ -22,7 +22,9 @@
     "@vue/eslint-config-prettier": "^7.0.0",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^8.2.0",
+    "laravel-echo": "^1.12.0",
     "prettier": "^2.5.1",
+    "pusher-js": "^7.1.1-beta",
     "vite": "^2.9.5"
   }
 }
