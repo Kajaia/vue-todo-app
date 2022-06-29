@@ -22,15 +22,19 @@ export default {
   },
   methods: {
     addTask() {
-      api
-        .addTask(this.title)
-        .then((res) => {
-          if (res.status === 201) {
-            this.title = "";
-            toast("success", "Task added");
-          }
-        })
-        .catch(console.error());
+      if (this.title.length) {
+        api
+          .addTask(this.title)
+          .then((res) => {
+            if (res.status === 201) {
+              this.title = "";
+              toast("success", "Task added");
+            }
+          })
+          .catch(console.error());
+      } else {
+        toast("warning", "Task title can't be empty");
+      }
     },
   },
 };
