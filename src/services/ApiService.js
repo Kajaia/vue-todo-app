@@ -19,6 +19,9 @@ export default {
       status: 0,
     });
   },
+  taskTitleChange(id, str) {
+    return api.put(`/tasks/${id}`, { title: str });
+  },
   doneUndoneTask(id) {
     return api.put(`/tasks/${id}/done`);
   },

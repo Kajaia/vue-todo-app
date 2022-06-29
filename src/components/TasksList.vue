@@ -1,16 +1,17 @@
 <template>
-  <div
-    class="d-flex align-items-center justify-content-between gap-3 mb-2"
-    v-for="task in tasks"
-    :key="task.id"
-  >
-    <div class="d-flex align-items-center gap-1">
-      <TaskDoneUndone :task="task" @task-updated="getTasks" />
-      <span :class="task.status === '1' ? 'text-line-through' : ''">{{
-        task.title
-      }}</span>
+  <div class="mb-2" v-for="task in tasks" :key="task.id">
+    <div class="d-flex align-items-center justify-content-between gap-3">
+      <div class="col-11 d-flex align-items-center gap-1">
+        <TaskDoneUndone :task="task" @task-updated="getTasks" />
+        <TaskTitle
+          class="w-100"
+          :id="task.id"
+          :title="task.title"
+          :status="task.status"
+        />
+      </div>
+      <TaskDelete :id="task.id" @task-deleted="getTasks" />
     </div>
-    <TaskDelete :id="task.id" @task-deleted="getTasks" />
   </div>
 </template>
 
@@ -18,10 +19,11 @@
 import api from "../services/ApiService";
 import TaskDelete from "./TaskDelete.vue";
 import TaskDoneUndone from "./TaskDoneUndone.vue";
+import TaskTitle from "./TaskTitle.vue";
 
 export default {
   name: "TasksList",
-  components: { TaskDelete, TaskDoneUndone },
+  components: { TaskDelete, TaskDoneUndone, TaskTitle },
   data() {
     return {
       tasks: [],
@@ -43,6 +45,9 @@ export default {
 
     // Echo listeners
     window.Echo.channel("tasks").listen("TaskAdded", () => {
+      this.getTasks();
+    });
+    window.Echo.channel("tasks").listen("TaskUpdated", () => {
       this.getTasks();
     });
     window.Echo.channel("tasks").listen("TaskDone", () => {
