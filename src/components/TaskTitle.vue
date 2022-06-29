@@ -19,6 +19,14 @@ export default {
       text: "",
     };
   },
+  watch: {
+    title: {
+      handler() {
+        this.text = this.title;
+      },
+      deep: true,
+    },
+  },
   methods: {
     taskTitleChange(id, str) {
       api

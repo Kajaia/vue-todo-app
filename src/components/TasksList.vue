@@ -2,7 +2,7 @@
   <div class="mb-2" v-for="task in tasks" :key="task.id">
     <div class="d-flex align-items-center justify-content-between gap-3">
       <div class="col-11 d-flex align-items-center gap-1">
-        <TaskDoneUndone :task="task" @task-updated="getTasks" />
+        <TaskDoneUndone :task="task" />
         <TaskTitle
           class="w-100"
           :id="task.id"
@@ -10,7 +10,7 @@
           :status="task.status"
         />
       </div>
-      <TaskDelete :id="task.id" @task-deleted="getTasks" />
+      <TaskDelete :id="task.id" />
     </div>
   </div>
 </template>
