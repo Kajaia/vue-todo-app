@@ -44,21 +44,22 @@ export default {
     this.getTasks();
 
     // Echo listeners
-    window.Echo.channel("tasks").listen("TaskAdded", () => {
-      this.getTasks();
-    });
-    window.Echo.channel("tasks").listen("TaskUpdated", () => {
-      this.getTasks();
-    });
-    window.Echo.channel("tasks").listen("TaskDone", () => {
-      this.getTasks();
-    });
-    window.Echo.channel("tasks").listen("TaskDeleted", () => {
-      this.getTasks();
-    });
-    window.Echo.channel("tasks").listen("TasksCleared", () => {
-      this.getTasks();
-    });
+    window.Echo.channel("tasks")
+      .listen("TaskAdded", () => {
+        this.getTasks();
+      })
+      .listen("TaskUpdated", () => {
+        this.getTasks();
+      })
+      .listen("TaskDone", () => {
+        this.getTasks();
+      })
+      .listen("TaskDeleted", () => {
+        this.getTasks();
+      })
+      .listen("TasksCleared", () => {
+        this.getTasks();
+      });
 
     // Emitt listeners
     this.emitter.on("filterUpdated", (str) => {
